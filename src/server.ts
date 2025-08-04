@@ -3,7 +3,7 @@ import path from 'path';
 import helmet from 'helmet';
 import express, { Request, Response, NextFunction } from 'express';
 import logger from 'jet-logger';
-
+import indexRouter from './routes/index.route'
 // import BaseRouter from '@src/routes';
 
 import Paths from '@src/common/constants/Paths';
@@ -40,7 +40,7 @@ if (ENV.NodeEnv === NodeEnvs.Production) {
 }
 
 // Add APIs, must be after middleware
-// app.use(Paths.Base, BaseRouter);
+app.use(indexRouter);
 
 // Add error handler
 app.use((err: Error, _: Request, res: Response, next: NextFunction) => {
