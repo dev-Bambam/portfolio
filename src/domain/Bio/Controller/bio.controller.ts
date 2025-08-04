@@ -5,3 +5,23 @@ import { IBioService } from "../Types/bio.types";
 
 const BioService = container.resolve<IBioService>('IBioService')
 
+export const getBio = async (req: Request, res: Response) => {
+    const bio = await BioService.getBio()
+    res.status(200).json({
+        status: 'success',
+        data: {
+            bio
+        }
+    })
+}
+
+export const updateBio = async (req: Request, res: Response) => {
+    const bioData = req.body
+    const bio = await BioService.update(bioData)
+    res.status(200).json({
+        status: 'success',
+        data: {
+            bio
+        }
+    })
+}
