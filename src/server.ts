@@ -4,6 +4,7 @@ import helmet from 'helmet';
 import express, { Request, Response, NextFunction } from 'express';
 import logger from 'jet-logger';
 import indexRouter from './routes/index.route'
+import cors from 'cors'
 // import BaseRouter from '@src/routes';
 
 import Paths from '@src/common/constants/Paths';
