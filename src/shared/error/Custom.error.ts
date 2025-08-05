@@ -1,4 +1,5 @@
 import BaseError from "./Base.error";
+import { ErrorObject } from "ajv";
 
 export class NotFoundError extends BaseError{
     constructor(public message = 'Resource not found') {
