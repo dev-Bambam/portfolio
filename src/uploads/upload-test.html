@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Test Image Upload</title>
+      <style>
+         :root {
+            --bg: #18181b;
+            --card: #23232a;
+            --primary: #6366f1;
+            --accent: #f472b6;
+            --text: #f4f4f5;
+            --muted: #a1a1aa;
+            --border: #27272a;
+         }
+         html,
+         body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: "Segoe UI", "Roboto", Arial, sans-serif;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+         }
+         h1 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            letter-spacing: 1px;
+         }
+         form {
+            background: var(--card);
+            padding: 2rem 2.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 24px 0 #0004;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            border: 1px solid var(--border);
+            margin-bottom: 1.5rem;
+         }
+         input[type="file"] {
+            color: var(--text);
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            padding: 0.5rem;
+            font-size: 1rem;
+         }
+         input[type="file"]::-webkit-file-upload-button {
+            background: var(--primary);
+            color: var(--text);
+            border: none;
+            border-radius: 0.5rem;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background 0.2s;
+         }
+         input[type="file"]::file-selector-button {
+            background: var(--primary);
+            color: var(--text);
+            border: none;
+            border-radius: 0.5rem;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background 0.2s;
+         }
+         input[type="file"]:hover::-webkit-file-upload-button,
+         input[type="file"]:hover::file-selector-button {
+            background: var(--accent);
+         }
+         button[type="submit"] {
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            color: var(--text);
+            border: none;
+            border-radius: 0.5rem;
+            padding: 0.7rem 1.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 2px 8px 0 #0002;
+            transition: background 0.2s, transform 0.1s;
+         }
+         button[type="submit"]:hover {
+            background: linear-gradient(90deg, var(--accent), var(--primary));
+            transform: translateY(-2px) scale(1.03);
+         }
+         #result {
+            margin-top: 1rem;
+            padding: 1rem 1.5rem;
+            background: var(--card);
+            border-radius: 0.7rem;
+            border: 1px solid var(--border);
+            min-width: 320px;
+            max-width: 480px;
+            word-break: break-all;
+            color: var(--muted);
+            font-size: 1rem;
+            box-shadow: 0 2px 8px 0 #0002;
+         }
+      </style>
+      <style>
+         .spinner {
+            display: none;
+            margin: 0 auto 1.5rem auto;
+            border: 4px solid var(--border);
+            border-top: 4px solid var(--primary);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+         }
+         @keyframes spin {
+            0% {
+               transform: rotate(0deg);
+            }
+            100% {
+               transform: rotate(360deg);
+            }
+         }
+      </style>
+   </head>
+   <body>
+      <h1>Test Single Image Upload</h1>
+      <form
+         id="uploadForm"
+         enctype="multipart/form-data"
+         method="POST"
+         action="http://localhost:3000/api/v1/upload/upload-single-image"
+      >
+         <input type="file" name="image" accept="image/*" required />
+         <button type="submit">Upload Image</button>
+      </form>
+      <div class="spinner" id="spinner"></div>
+      <div id="result"></div>
+      <div id="uploaded-image-container" style="margin-top: 1.5rem"></div>
+      <style>
+         .pro-img {
+            display: block;
+            margin: 0 auto;
+            max-width: 320px;
+            aspect-ratio: 1/1;
+            border-radius: 50%;
+            box-shadow: 0 8px 32px 0 #0008, 0 1.5px 8px 0 var(--primary);
+            border: 4px solid var(--primary);
+            object-fit: cover;
+            object-position: center;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            /* Simulate background removal with blend and filter */
+            mix-blend-mode: lighten;
+            filter: drop-shadow(0 0 16px var(--primary)) drop-shadow(0 0 32px var(--accent))
+               saturate(1.2) contrast(1.1);
+            transition: box-shadow 0.3s, border 0.3s, filter 0.3s;
+         }
+         .pro-img:hover {
+            box-shadow: 0 16px 48px 0 #000a, 0 2px 16px 0 var(--accent);
+            border: 4px solid var(--accent);
+            filter: drop-shadow(0 0 32px var(--accent)) saturate(1.4) contrast(1.2);
+         }
+      </style>
+      <script>
+         const spinner = document.getElementById("spinner");
+         const uploadedImageContainer = document.getElementById("uploaded-image-container");
+         document.getElementById("uploadForm").addEventListener("submit", async function (e) {
+            e.preventDefault();
+            const form = e.target;
+            const formData = new FormData(form);
+            const resultDiv = document.getElementById("result");
+            resultDiv.textContent = "";
+            uploadedImageContainer.innerHTML = "";
+            spinner.style.display = "block";
+            try {
+               const response = await fetch(form.action, {
+                  method: "POST",
+                  body: formData,
+               });
+               if (response.ok) {
+                  const data = await response.json();
+                  //   resultDiv.textContent = "Upload successful: " + JSON.stringify(data);
+                  if (data && data.data && data.data.imageUrl) {
+                     const img = document.createElement("img");
+                     img.src = data.data.imageUrl;
+                     img.alt = "Uploaded Image";
+                     img.className = "pro-img";
+                     uploadedImageContainer.appendChild(img);
+                  }
+               } else {
+                  resultDiv.textContent = "Upload failed: " + response.statusText;
+               }
+            } catch (err) {
+               resultDiv.textContent = "Upload failed: " + err;
+               console.log(err.message);
+            } finally {
+               spinner.style.display = "none";
+            }
+         });
+      </script>
+   </body>
+</html>

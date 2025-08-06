@@ -5,6 +5,8 @@ import { IUploadService } from "./image.types";
 const UploadService = container.resolve<IUploadService>('IUploadService')
 
 export const singleImageUploadHandler = async (req: Request, res: Response) => {
+    req.setTimeout(120000) // set time to 2mins to give cloudinary enough time
+    
     const imageFile = req.file
     if (!imageFile) {
         throw new Error('Image not uploaded')
