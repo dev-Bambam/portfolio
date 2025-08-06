@@ -1,8 +1,8 @@
 import mongoose from "mongoose";
-import { TAdmin } from "./auth.types";
+import { TSudoUser } from "./auth.types";
 import bcrypt from 'bcryptjs'
 
-const AdminSchema = new mongoose.Schema<TAdmin>({
+const AdminSchema = new mongoose.Schema<TSudoUser>({
     nickname: { type: String, required: true },
     password: { type: String, required: true },
     phrase: { type: String, required: true },
@@ -26,6 +26,6 @@ AdminSchema.pre('save', async function (next) {
     next()
 })
 
-const Sudo = mongoose.model('Sudo', AdminSchema)
+const SudoUser = mongoose.model('SudoUser', AdminSchema)
 
-export default Sudo
+export default SudoUser

@@ -1,4 +1,4 @@
-export type TAdmin = {
+export type TSudoUser = {
     _id:string
     nickname: string,
     password: string,
@@ -6,12 +6,13 @@ export type TAdmin = {
     role: string
 }
 
-export type TLogin = Omit<TAdmin, '_id'>
+export type TLogin = Omit<TSudoUser, '_id'>
 
-export type TAuthResp = TAdmin & {
+export type TAuthResp = Omit<TSudoUser, 'password' |'phrase'|'role'> & {
     token:string
 }
 
 export interface IAuthService{
-    login(loginDetails:TLogin): Promise<TAuthResp>
+    login(loginDetails: TLogin): Promise<TAuthResp>
+    oneTimeSudoRegister(sudo:TLogin): Promise<TSudoUser>
 }
