@@ -5,6 +5,11 @@ import * as biotype from "../Types/bio.types";
 export class BioService implements biotype.IBioService {
    constructor(@inject("IBioRepo") private BioRepo: biotype.IBioRepo) {}
 
+   async createBio(bioData: biotype.TBioInput): Promise<biotype.TBioResponse> {
+      const bio = await this.BioRepo.createBio(bioData)
+      return bio
+   }
+   
    async getBio(): Promise<biotype.TBioResponse> {
       const bio = await this.BioRepo.getBio();
       return bio;
