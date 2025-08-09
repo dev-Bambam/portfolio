@@ -1,15 +1,15 @@
 class BaseError extends Error{
-    constructor(
+  constructor(
         public message: string,
         public statusCode: number,
         public type: string,
         public status?: string,
-        public isOperational = true
-    ) {
-        super(message)
-        this.status = 'error'
-        Error.captureStackTrace(this, this.constructor)
-    }
+        public isOperational = true,
+  ) {
+    super(message);
+    this.status = 'error';
+    Error.captureStackTrace(this, this.constructor);
+  }
 }
 
-export default BaseError
+export default BaseError;

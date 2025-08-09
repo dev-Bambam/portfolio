@@ -1,10 +1,10 @@
-import { Router } from "express";
-import * as BioController from '../Controller/bio.controller'
+import { Router } from 'express';
+import * as BioController from '../Controller/bio.controller';
 
-const router = Router()
+const router = Router();
 
-router.post('/create-bio', BioController.createBio)
-router.get('/fetch-bio', BioController.getBio)
-router.put('/update-bio', BioController.updateBio)
+router.post('/create-bio', BioController.createBio);
+router.get('/fetch-bio', BioController.getBio);
+router.put('/update-bio', BioController.updateBio);
 
-export default router
+export default router;

@@ -1,4 +1,4 @@
-export type TBio = {
+export interface TBio {
     _id: string;
     name: string;
     summary: string;
@@ -6,17 +6,17 @@ export type TBio = {
     profileImageUrl: string;
     socialLinks: [
         {
-            name: string;
-            url: string;
+            name: string,
+            url: string,
         }
     ];
     certificates?: [{
         institution: string,
-        certImageUrl: string
-    }]
-};
+        certImageUrl: string,
+    }];
+}
 
-export type TBioInput = Omit<TBio, "_id">;
+export type TBioInput = Omit<TBio, '_id'>;
 
 export type TBioResponse = TBio;
 export type TbioUpdate = Partial<TBio>;

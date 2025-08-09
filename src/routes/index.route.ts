@@ -1,8 +1,8 @@
-import { Router } from "express";
-import indexRoute from './all.route'
+import { Router } from 'express';
+import indexRoute from './all.route';
 
-const router = Router()
+const router = Router();
 
-router.use('/api/v1', indexRoute)
+router.use('/api/v1', indexRoute);
 
-export default router
+export default router;

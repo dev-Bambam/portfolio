@@ -1,9 +1,9 @@
-import { Router } from "express";
-import * as imageController from './image.controller'
-import { upload } from "@src/shared/multer";
+import { Router } from 'express';
+import * as imageController from './image.controller';
+import { upload } from '@src/shared/multer';
 
-const router = Router()
+const router = Router();
 
-router.post('/upload-single-image', upload.single('image'), imageController.singleImageUploadHandler)
+router.post('/upload-single-image', upload.single('image'), imageController.singleImageUploadHandler);
 
-export default router
+export default router;

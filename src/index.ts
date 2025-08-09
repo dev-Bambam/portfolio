@@ -1,5 +1,5 @@
-import 'reflect-metadata'
-import '@src/shared/container'
+import 'reflect-metadata';
+import '@src/shared/container';
 import logger from 'jet-logger';
 import DatabaseConnection from './database/mongo.db';
 
@@ -15,7 +15,7 @@ const SERVER_START_MSG = (
   'Express server started on port: ' + ENV.Port.toString()
 );
 
-DatabaseConnection()
+DatabaseConnection();
 
 
 /******************************************************************************
