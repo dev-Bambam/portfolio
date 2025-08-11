@@ -2,26 +2,26 @@ import mongoose from 'mongoose';
 import { TBio } from '../Types/bio.types';
 
 const BioSchema = new mongoose.Schema<TBio>({
-  name: { type: String, default: undefined },
-  summary: { type: String, default: undefined },
+  name: { type: String, default: '' },
+  summary: { type: String, default: '' },
   fullBio: {
     type: String,
-    default: undefined,
+    default: '',
   },
   profileImageUrl: {
     type: String,
-    default: undefined,
+    default: '',
   },
   socialLinks: [
     {
-      name: { type: String, required: true },
-      url: { type: String, required: true },
+      name: { type: String, required: true, default: '' },
+      url: { type: String, required: true, default: '' },
     },
   ],
   certificates: [
     {
-      institution: { type: String },
-      certImageUrl: { type: String },
+      institution: { type: String, default:'' },
+      certImageUrl: { type: String, default:'' },
     },
   ],
 });

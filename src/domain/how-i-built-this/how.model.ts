@@ -2,29 +2,28 @@ import { model, Schema } from "mongoose";
 import { THowIBuiltThis } from "./how.types";
 
 const HowIBuiltThisSchema: Schema = new Schema({
-   architectureOverview: { type: String, required: true },
+   architectureOverview: { type: String, required: true, default: "" },
    backendStack: {
-      framework: { type: String, required: true },
-      database: { type: String, required: true },
-      orm: { type: String, required: true },
-      realtime: { type: String, required: true },
+      framework: { type: String, required: true, default: "" },
+      database: { type: String, required: true, default: "" },
+      orm: { type: String, required: true, default: "" },
+      realtime: { type: String, required: true, default: "" },
    },
    frontendStack: {
-      framework: { type: String, required: true },
-      styling: { type: String, required: true },
+      framework: { type: String, required: true, default: "" },
+      styling: { type: String, required: true, default: "" },
    },
    keyFeatures: {
-      realtime: { type: String, required: true },
-      asynchronous: { type: String, required: true },
-      security: { type: String, required: true },
+      realtime: { type: String, required: true, default: "" },
+      asynchronous: { type: String, required: true, default: "" },
+      security: { type: String, required: true, default: "" },
    },
    deployment: {
-      containerization: { type: String, required: true },
-      ciCd: { type: String, required: true },
+      containerization: { type: String, required: true, default: "" },
+      ciCd: { type: String, required: true, default: "" },
    },
 });
 
- const HowIBuiltThisModel = model<THowIBuiltThis>("HowIBuiltThis", HowIBuiltThisSchema);
+const HowIBuiltThisModel = model<THowIBuiltThis>("HowIBuiltThis", HowIBuiltThisSchema);
 
-
- export default HowIBuiltThisModel
+export default HowIBuiltThisModel;

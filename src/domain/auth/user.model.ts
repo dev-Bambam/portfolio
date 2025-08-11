@@ -3,9 +3,9 @@ import { TSudoUser } from './auth.types';
 import bcrypt from 'bcryptjs';
 
 const AdminSchema = new mongoose.Schema<TSudoUser>({
-  nickname: { type: String, required: true },
-  password: { type: String, required: true },
-  phrase: { type: String, required: true },
+  nickname: { type: String, required: true, default:'' },
+  password: { type: String, required: true, default:'' },
+  phrase: { type: String, required: true, default:'' },
   role: {type: String, default: 'sudo'},
 });
 

@@ -1,8 +1,9 @@
 import { Router } from 'express';
-import indexRoute from './all.route';
+import adminRoute from './admin.routes';
+import frontendRoute from './frontend.route'
 
 const router = Router();
 
-router.use('/api/v1', indexRoute);
+router.use('/api/v1', adminRoute);
 
 export default router;
