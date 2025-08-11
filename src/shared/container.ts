@@ -11,6 +11,8 @@ import { ISkillRepo, ISkillService } from "@src/domain/Skill/Types/skill.types";
 import { container } from "tsyringe";
 import { ProjectRepo } from "@src/domain/Project/Repository/project.repo";
 import { ProjectService } from "@src/domain/Project/Service/project.service";
+import { HowIBuiltThisRepo } from "@src/domain/how-i-built-this/how.repo";
+import { HowIBuiltThisService } from "@src/domain/how-i-built-this/how.service";
 
 container.register<IBioRepo>("IBioRepo", { useClass: BioRepo });
 container.register<IBioService>("IBioService", { useClass: BioService });
@@ -20,3 +22,5 @@ container.register<ISkillRepo>("ISkillRepo", { useClass: SkillRepo });
 container.register<ISkillService>("ISkillService", { useClass: SkillService });
 container.register("ProjectRepo", { useClass: ProjectRepo });
 container.register("ProjectService", { useClass: ProjectService });
+container.register("HowIBuiltThisRepo", { useClass: HowIBuiltThisRepo });
+container.register("HowIBuiltThisService", { useClass: HowIBuiltThisService });
