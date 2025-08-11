@@ -9,6 +9,8 @@ import { SkillRepo } from "@src/domain/Skill/Repository/skill.repo";
 import { SkillService } from "@src/domain/Skill/Service/skill.service";
 import { ISkillRepo, ISkillService } from "@src/domain/Skill/Types/skill.types";
 import { container } from "tsyringe";
+import { ProjectRepo } from "@src/domain/Project/Repository/project.repo";
+import { ProjectService } from "@src/domain/Project/Service/project.service";
 
 container.register<IBioRepo>("IBioRepo", {
    useClass: BioRepo,
@@ -28,3 +30,5 @@ container.register<ISkillRepo>("ISkillRepo", {
 container.register<ISkillService>("ISkillService", {
    useClass: SkillService,
 });
+container.register("ProjectRepo", { useClass: ProjectRepo });
+container.register("ProjectService", { useClass: ProjectService });
