@@ -11,17 +11,17 @@ export const createProject = async (req: Request, res: Response) => {
 
 export const getAllProjects = async (req: Request, res: Response) => {
    const projects = await projectService.getAllProjects();
-   res.status(201).json({ status: "success", data: { projects } });
+   res.status(200).json({ status: "success", data: { projects } });
 };
 
 export const getProjectById = async (req: Request, res: Response) => {
    const project = await projectService.getProjectById(req.params.id);
-   res.status(201).json({ status: "success", data: { project } });
+   res.status(200).json({ status: "success", data: { project } });
 };
 
 export const getProjectBySlug = async (req: Request, res: Response) => {
    const project = await projectService.getProjectBySlug(req.params.slug);
-   res.status(201).json({ status: "success", data: { project } });
+   res.status(200).json({ status: "success", data: { project } });
 };
 
 export const updateProject = async (req: Request, res: Response) => {
@@ -31,5 +31,5 @@ export const updateProject = async (req: Request, res: Response) => {
 
 export const deleteProject = async (req: Request, res: Response) => {
    const deletedId = await projectService.deleteProject(req.params.id);
-   res.status(201).json({ status: "success", data: { deletedId } });
+   res.status(200).json({ status: "success", data: { deletedId } });
 };

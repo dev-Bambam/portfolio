@@ -12,23 +12,11 @@ import { container } from "tsyringe";
 import { ProjectRepo } from "@src/domain/Project/Repository/project.repo";
 import { ProjectService } from "@src/domain/Project/Service/project.service";
 
-container.register<IBioRepo>("IBioRepo", {
-   useClass: BioRepo,
-});
-container.register<IBioService>("IBioService", {
-   useClass: BioService,
-});
-container.register<IUploadService>("IUploadService", {
-   useClass: UploadService,
-});
-container.register<IAuthService>("IAuthService", {
-   useClass: AuthService,
-});
-container.register<ISkillRepo>("ISkillRepo", {
-   useClass: SkillRepo,
-});
-container.register<ISkillService>("ISkillService", {
-   useClass: SkillService,
-});
+container.register<IBioRepo>("IBioRepo", { useClass: BioRepo });
+container.register<IBioService>("IBioService", { useClass: BioService });
+container.register<IUploadService>("IUploadService", { useClass: UploadService });
+container.register<IAuthService>("IAuthService", { useClass: AuthService });
+container.register<ISkillRepo>("ISkillRepo", { useClass: SkillRepo });
+container.register<ISkillService>("ISkillService", { useClass: SkillService });
 container.register("ProjectRepo", { useClass: ProjectRepo });
 container.register("ProjectService", { useClass: ProjectService });
