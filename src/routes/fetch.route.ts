@@ -23,6 +23,6 @@ router.get("/projects/slug/:slug", getProjectBySlug);
 router.get("/bio", getBio);
 
 // How I Built This domain
-router.get("/how/get-details", getHowIBuiltThisDetails);
+router.get("/how-i-built-this", getHowIBuiltThisDetails);
 
 export default router;

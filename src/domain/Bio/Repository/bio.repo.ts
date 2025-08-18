@@ -19,7 +19,7 @@ export class BioRepo implements biotype.IBioRepo {
     let bio;
     try {
       bio = await this.model.findOne();
-      Object.assign(bio, bioData);
+      Object.assign(bio!, bioData);
       bio?.save();
     } catch (error) {
       console.error(error.message);

@@ -3,10 +3,10 @@
   "version": "0.0.0",
   "scripts": {
     "build": "ts-node ./scripts/build.ts",
+    "build:prod": "tsc --project tsconfig.build.json",
     "clean-install": "rm -rf ./node_modules && rm -r package-lock.json && npm i",
     "deve": "NODE_ENV=development ts-node ./src",
     "dev": "nodemon --exec \"npm run deve\" --watch ./src --ext .ts",
-    "lint": "eslint .",
     "start": "NODE_ENV=production node -r ./config.js ./dist",
     "test": "NODE_ENV=test vitest",
     "type-check": "tsc --noEmit"
