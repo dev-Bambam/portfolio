@@ -8,7 +8,7 @@
       "deve": "NODE_ENV=development ts-node ./src",
       "dev": "nodemon --exec \"npm run deve\" --watch ./src --ext .ts",
       "lint": "eslint . --ext .ts || true",
-      "start": "NODE_ENV=production node -r ./config.js ./temp/index.js",
+      "start": "NODE_ENV=production node -r ./dist/config.js ./dist/src/index.js",
       "test": "NODE_ENV=test vitest",
       "type-check": "tsc --noEmit"
    },
