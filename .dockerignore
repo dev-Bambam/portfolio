@@ -1,0 +1,10 @@
+node_modules/
+.git/
+dist/
+tests/
+doc/
+README.md
+vitest.config.js
+eslint.config.ts
+scripts/
+.gitignore
