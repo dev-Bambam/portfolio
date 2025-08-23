@@ -1,20 +1,16 @@
+version: "3.8"
 services:
    app:
       build:
          context: .
          dockerfile: Dockerfile
-      
       container_name: my-portfolio-app
-      
       ports:
-         - "8080:3000"
-      
-      # Corrected path to point to the .env file in the config folder
+         - "8080:8080"
       env_file:
-         - ./config/.env.production
-   
+         - config/.env.production
       restart: always
-   
-      volumes:
-         - .:/usr/src/app
-         - /usr/src/app/node_modules
+      # Uncomment the volumes below for local development (bind-mount source to container)
+      # volumes:
+      #   - .:/usr/src/app
+      #   - /usr/src/app/node_modules
