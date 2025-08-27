@@ -6,21 +6,21 @@ import moduleAlias from "module-alias";
 // Check the env
 const NODE_ENV = process.env.NODE_ENV ?? "development";
 
-// Configure "dotenv"
-let result2;
+/** 
+ * Configure "dotenv for local development only, 
+ * environmetal var config is not needed in prod, and in containerization
+ *  as the .env is handle by docker compose and hosting platform
+ * */  
+let configResult;
 console.log(`env: ${NODE_ENV}`)
 if (NODE_ENV === "development") {
-   result2 = dotenv.config({
+   configResult = dotenv.config({
       path: path.join(__dirname, `./config/.env.${NODE_ENV}`),
    });
-} else {
-   result2 = dotenv.config({
-      path: path.join(__dirname, `../config/.env.${NODE_ENV}`),
-   });
-}
+} 
 
-if (result2.error) {
-   throw result2.error;
+if (configResult?.error) {
+   throw configResult.error;
 }
 
 // Configure moduleAlias

@@ -35,7 +35,6 @@ RUN npm ci --production --silent
 # Copy built artifacts and any runtime files from builder
 COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/dist/config.js ./dist/config.js
-COPY config ./config
 
 # If the above commands fail, it's likely because the files don't exist
 # You can add some logging to verify this
