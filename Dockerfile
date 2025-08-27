@@ -45,7 +45,7 @@ RUN ls -la /app
 RUN addgroup -S appgroup && adduser -S appuser -G appgroup
 USER appuser
 
-# Expose the port defined in .env (default 8080)
+# Expose the port defined in .env 
 EXPOSE 8080
 
 # Start the app using the production start command (matches package.json)

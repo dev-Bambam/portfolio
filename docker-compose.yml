@@ -6,9 +6,12 @@ services:
          dockerfile: Dockerfile
       container_name: my-portfolio-app
       ports:
-         - "8080:8080"
+         - 8080:8080
       env_file:
          - config/.env.production
+      dns: 
+         - 8.8.8.8
+         - 1.1.1.1
       restart: always
       # Uncomment the volumes below for local development (bind-mount source to container)
       # volumes:
