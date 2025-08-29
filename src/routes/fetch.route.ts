@@ -7,7 +7,7 @@ import {
 } from "@src/domain/Project/Controller/project.controller";
 import { getBio } from "@src/domain/Bio/Controller/bio.controller";
 import { getDetails as getHowIBuiltThisDetails } from "@src/domain/how-i-built-this/how.controller";
-
+import { createContact } from "@src/domain/contact/contact.controller";
 const router = Router();
 
 // Skill domain
@@ -25,4 +25,6 @@ router.get("/bio", getBio);
 // How I Built This domain
 router.get("/how-i-built-this", getHowIBuiltThisDetails);
 
+// Messages
+router.post('/contacts/send-a-message', createContact)
 export default router;

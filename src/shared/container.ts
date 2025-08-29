@@ -13,6 +13,8 @@ import { ProjectRepo } from "@src/domain/Project/Repository/project.repo";
 import { ProjectService } from "@src/domain/Project/Service/project.service";
 import { HowIBuiltThisRepo } from "@src/domain/how-i-built-this/how.repo";
 import { HowIBuiltThisService } from "@src/domain/how-i-built-this/how.service";
+import { ContactRepo } from "../domain/contact/contact.repo";
+import { ContactService } from "../domain/contact/contact.service";
 
 container.register<IBioRepo>("IBioRepo", { useClass: BioRepo });
 container.register<IBioService>("IBioService", { useClass: BioService });
@@ -24,3 +26,5 @@ container.register("ProjectRepo", { useClass: ProjectRepo });
 container.register("ProjectService", { useClass: ProjectService });
 container.register("HowIBuiltThisRepo", { useClass: HowIBuiltThisRepo });
 container.register("HowIBuiltThisService", { useClass: HowIBuiltThisService });
+container.register("IContactRepo", { useClass: ContactRepo });
+container.register("IContactService", { useClass: ContactService });
